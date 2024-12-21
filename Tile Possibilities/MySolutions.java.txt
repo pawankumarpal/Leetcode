@@ -4,7 +4,40 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.printer.PrintArray;
+public class TilePossibilities {
+    public int numTilePossibilities(String tiles) {
+        int[] freq = new int[26];
+        for (char c : tiles.toCharArray()) {
+            freq[c - 'A']++;
+        }
+        return backtrack(freq);
+    }
 
+    private int backtrack(int[] freq) {
+        int count = 0;
+
+        for (int i = 0; i < 26; i++) {
+            if (freq[i] > 0) {
+                freq[i]--;
+                count += 1;
+                count += backtrack(freq);
+                freq[i]++;
+            }
+        }
+
+        return count;
+    }
+
+    public static void main(String[] args) {
+        TilePossibilities solver = new TilePossibilities();
+
+        String tiles1 = "AAB";
+        System.out.println("Input: " + tiles1);
+        System.out.println("Output: " + solver.numTilePossibilities(tiles1)); // Output: 8
+    }
+}
+/**
+Non Working
 public class PrintAllSubStrings {
 
 	public static void main(String[] args) {
@@ -49,4 +82,7 @@ public class PrintAllSubStrings {
 		return false;
 	}
 
-}
+}*/
+
+
+
