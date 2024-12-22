@@ -1,5 +1,37 @@
 import java.util.Arrays;
 
+/** MY ORIGINAL SOLUTION PASSED 945/962 CASES
+	 public int[] leftmostBuildingsQueries(int[] heights, int[][] queries) {
+	        int queriesLen = queries.length;
+	        int heightsLen = heights.length;
+	        int meetingArray [] = new int [queriesLen];
+	        int index=0;
+	        for(int i=0;i<queriesLen;i++){
+	            if(queries[i][0]==queries[i][1]){
+	                meetingArray[index]=queries[i][0];
+	                index++;
+	                continue;
+	            }else{
+	                int aBuildingHight = heights[queries[i][0]];
+	                int bBuildingHight = heights[queries[i][1]];
+	                int j = queries[i][0]>queries[i][1]?queries[i][0]:queries[i][1];
+	                for(;j<heightsLen;j++){
+	                    if(heights[j]>=aBuildingHight && heights[j]>=bBuildingHight){
+	                        meetingArray[index]=j;
+	                        index++;
+	                        break;
+	                    }
+	                    if(j==heightsLen-1) {
+	                        meetingArray[index]=-1;
+	                        index++;
+	                    }
+	                }
+	            }
+	        }
+	        return meetingArray;
+	    }
+*/
+//-- Copied Solution--------------------------------------
 // BinaryIndexedTree class for range queries and updates
 class BinaryIndexedTree {
     // A large number representing `infinity`
